@@ -11,7 +11,15 @@ import SwiftUI
 struct LocationsListApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            LocationsList.UI(
+                viewModel: LocationsList.ViewModel(
+                    deps: .init(
+                        apiService: StaticFileAPIService(),
+                        storageService: DefaultStorageService(),
+                        externalActionService: WikipediaExternalActionService()
+                    )
+                )
+            )
         }
     }
 }
